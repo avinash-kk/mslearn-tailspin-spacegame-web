@@ -58,12 +58,8 @@ steps:
     command: 'test'
     arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourceDirectory)/TestResults/Coverage/'
     publishTestResults: true
-    projects: '**/*.csproj'
+    projects: '**/*.Tests.csproj'
 
-- task: VSTest@2
-  inputs:
-    codeCoverageEnabled: true
-    
 - task: DotNetCoreCLI@2
   displayName: 'Create code coverage report'
   inputs:
